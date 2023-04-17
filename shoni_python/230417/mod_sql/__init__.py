@@ -13,8 +13,8 @@ class Database :
         )
         self.cursor = self.db.cursor(pymysql.cursors.DictCursor)
 
-    def sql_query(sql, values = []) :
-    # if (sql.find('select') != -1) and (sql.find('select') < 10) :
+    def sql_query(self, sql, values = []) :
+        # if (sql.find('select') != -1) and (sql.find('select') < 10) :
         if (sql.replace('\n', '').strip().startswith('select')) :
             self.cursor.execute(sql, values)
             result = self.cursor.fetchall()
@@ -25,3 +25,7 @@ class Database :
             self.db.commit()
             result = "Query OK"
         return result
+    
+    # 접속 끊는 과정
+    def sql_close(self) :
+        self.db.close()
