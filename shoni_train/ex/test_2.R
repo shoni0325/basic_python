@@ -1,0 +1,5 @@
+volume <- c(1, 1.4, 1.6, 2, 2.2, 2.4, 3, 3, 3.6)
+mileage <- c(15, 13, 13, 12, 11, 10.5, 10, 9, 8)
+car <- data.frame(volume, mileage)
+result <- lm(data = car, mileage~volume)
+summary(result)
